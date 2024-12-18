@@ -11,7 +11,9 @@ struct RootView: View {
     @State private var showSignInView: Bool = false
     var body: some View {
         ZStack {
-            SettingsView(showSignInView: $showSignInView)
+            if !showSignInView {
+                SettingsView(showSignInView: $showSignInView)
+            }
         }
         .onAppear {
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
