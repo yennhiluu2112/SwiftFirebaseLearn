@@ -23,6 +23,7 @@
 		FCF8DD0B2D131A2500AD3C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCF8DD0A2D131A2500AD3C35 /* GoogleService-Info.plist */; };
 		FCF8DD0F2D132A5800AD3C35 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8DD0E2D132A5800AD3C35 /* Utilities.swift */; };
 		FCF8DD112D132F4200AD3C35 /* SignInGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8DD102D132F4200AD3C35 /* SignInGoogleHelper.swift */; };
+		FCF8DD132D15209200AD3C35 /* SignInAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8DD122D15209200AD3C35 /* SignInAppleHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FCF8DD0C2D131A4700AD3C35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FCF8DD0E2D132A5800AD3C35 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FCF8DD102D132F4200AD3C35 /* SignInGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGoogleHelper.swift; sourceTree = "<group>"; };
+		FCF8DD122D15209200AD3C35 /* SignInAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				FCF8DCF92D0605A900AD3C35 /* AuthenticationView.swift */,
+				FCF8DD122D15209200AD3C35 /* SignInAppleHelper.swift */,
 				FCF8DCFD2D06079B00AD3C35 /* SignInEmailView.swift */,
 				FCF8DD032D06132D00AD3C35 /* SettingsView.swift */,
 				FCF8DCFF2D060BDA00AD3C35 /* AuthenticationManager.swift */,
@@ -214,6 +217,7 @@
 				FCF8DCFA2D0605A900AD3C35 /* AuthenticationView.swift in Sources */,
 				FCF8DD002D060BDA00AD3C35 /* AuthenticationManager.swift in Sources */,
 				FCF8DD0F2D132A5800AD3C35 /* Utilities.swift in Sources */,
+				FCF8DD132D15209200AD3C35 /* SignInAppleHelper.swift in Sources */,
 				FCF8DCFE2D06079B00AD3C35 /* SignInEmailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
