@@ -13,7 +13,6 @@ import GoogleSignInSwift
 final class AuthenticationViewModel: ObservableObject {
     
 //    @Published var didSignInWithApple: Bool = false
-    let signInAppleHelper = SignInAppleHelper()
     
     func signInGoogle() async throws {
         let helper = SignInGoogleHelper()
@@ -26,6 +25,10 @@ final class AuthenticationViewModel: ObservableObject {
         let tokens = try await helper.startSignInWithAppleFlow()
         try await AuthenticationManager.shared.signInWithApple(tokens: tokens)
     }
+    
+    func signInAnonymous() async throws {
+        try await AuthenticationManager.shared.signInAnonymous()
+    }
 }
 
 struct AuthenticationView: View {
@@ -37,7 +40,7 @@ struct AuthenticationView: View {
             NavigationLink {
                 SignInEmailView(showSignInView: $showSignInView)
             } label: {
-                Text("Sign Up With Email")
+                Text("Sign In With Email")
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(height: 55)
@@ -45,6 +48,27 @@ struct AuthenticationView: View {
                     .background(.blue)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
+            
+            Button(action: {
+                Task {
+                    do {
+                        try await viewModel.signInAnonymous()
+                        showSignInView = false
+                    } catch {
+                        print(error)
+                    }
+                }
+            }, label: {
+                Text("Sign In Anonymously")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(.orange)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            })
+            .frame(height: 55)
+            
             GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
                 Task {
                     do {
