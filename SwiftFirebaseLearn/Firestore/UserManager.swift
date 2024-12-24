@@ -8,6 +8,12 @@
 import Foundation
 import FirebaseFirestore
 
+struct Movie: Codable {
+    let id: String
+    let title: String
+    let isPopular: Bool
+}
+
 struct DBUser: Codable {
     let uid: String
     let isAnonymous: Bool?
@@ -15,6 +21,8 @@ struct DBUser: Codable {
     let photoUrl: String?
     let dateCreated: Date?
     let isPremium: Bool?
+    let preferences: [String]?
+    let favoriteMovie: Movie?
     
     init(auth: AuthDataResultModel) {
         self.uid = auth.uid
@@ -23,14 +31,18 @@ struct DBUser: Codable {
         self.photoUrl = auth.photoURL
         self.dateCreated = Date()
         self.isPremium = false
+        self.preferences = nil
+        self.favoriteMovie = nil
     }
     
     init(uid: String,
          isAnonymous: Bool? = nil,
-         email: String? = nil, 
+         email: String? = nil,
          photoUrl: String? = nil,
          dateCreated: Date? = nil,
-         isPremium: Bool? = nil
+         isPremium: Bool? = nil,
+         preferences: [String]? = nil,
+         favoriteMovie: Movie? = nil
     ) {
         self.uid = uid
         self.isAnonymous = isAnonymous
@@ -38,6 +50,8 @@ struct DBUser: Codable {
         self.photoUrl = photoUrl
         self.dateCreated = dateCreated
         self.isPremium = isPremium
+        self.preferences = preferences
+        self.favoriteMovie = favoriteMovie
     }
     
 //    mutating func togglePremiumStatus() {
@@ -52,6 +66,8 @@ struct DBUser: Codable {
         case photoUrl = "photo_url"
         case dateCreated = "date_created"
         case isPremium = "is_premium"
+        case preferences = "preferences"
+        case favoriteMovie = "favorite_movie"
     }
     
     func encode(to encoder: Encoder) throws {
@@ -62,6 +78,8 @@ struct DBUser: Codable {
         try container.encode(self.photoUrl, forKey: .photoUrl)
         try container.encode(self.dateCreated, forKey: .dateCreated)
         try container.encode(self.isPremium, forKey: .isPremium)
+        try container.encode(self.preferences, forKey: .preferences)
+        try container.encode(self.favoriteMovie, forKey: .favoriteMovie)
     }
 
     init(from decoder: any Decoder) throws {
@@ -72,6 +90,8 @@ struct DBUser: Codable {
         self.photoUrl = try container.decodeIfPresent(String.self, forKey: .photoUrl)
         self.dateCreated = try container.decodeIfPresent(Date.self, forKey: .dateCreated)
         self.isPremium = try container.decodeIfPresent(Bool.self, forKey: .isPremium)
+        self.preferences = try container.decodeIfPresent([String].self, forKey: .preferences)
+        self.favoriteMovie = try container.decodeIfPresent(Movie.self, forKey: .favoriteMovie)
     }
 }
 
@@ -84,17 +104,17 @@ final class UserManager {
         return userCollection.document(uid)
     }
     
-//    private let encoder: Firestore.Encoder = {
-//        let encoder = Firestore.Encoder()
+    private let encoder: Firestore.Encoder = {
+        let encoder = Firestore.Encoder()
 //        encoder.keyEncodingStrategy = .convertToSnakeCase
-//        return encoder
-//    }()
-//    
-//    private let decoder: Firestore.Decoder = {
-//        let decoder = Firestore.Decoder()
+        return encoder
+    }()
+    
+    private let decoder: Firestore.Decoder = {
+        let decoder = Firestore.Decoder()
 //        decoder.keyDecodingStrategy = .convertFromSnakeCase
-//        return decoder
-//    }()
+        return decoder
+    }()
     
     func createNewUser(user: DBUser) throws {
         try userDocument(uid: user.uid).setData(from: user, merge: false)
@@ -104,12 +124,45 @@ final class UserManager {
         return try await userDocument(uid: uid).getDocument(as: DBUser.self)
     }
     
-    func updateUserPremiumStatus(uid: String, isPremium: Bool) {
+    func updateUserPremiumStatus(uid: String, isPremium: Bool) async throws {
         let data: [String: Any] = [
             DBUser.CodingKeys.isPremium.rawValue : isPremium
         ]
-        userDocument(uid: uid).updateData(data)
+        try await userDocument(uid: uid).updateData(data)
     }
+    
+    func addUserPreference(uid: String, preference: String) async throws {
+        let data: [String: Any] = [
+            DBUser.CodingKeys.preferences.rawValue : FieldValue.arrayUnion([preference])
+        ]
+        try await userDocument(uid: uid).updateData(data)
+    }
+    
+    
+    func removeUserPreference(uid: String, preference: String) async throws {
+        let data: [String: Any] = [
+            DBUser.CodingKeys.preferences.rawValue : FieldValue.arrayRemove([preference])
+        ]
+        try await userDocument(uid: uid).updateData(data)
+    }
+    
+    func addFavoriteMovie(uid: String, movie: Movie) async throws {
+        guard let data = try? encoder.encode(movie) else {
+            throw URLError(.badURL)
+        }
+        let dict: [String: Any] = [
+            DBUser.CodingKeys.favoriteMovie.rawValue : data
+        ]
+        try await userDocument(uid: uid).updateData(dict)
+    }
+    
+    func removeFavoriteMovie(uid: String) async throws {
+        let data: [String: Any?] = [
+            DBUser.CodingKeys.favoriteMovie.rawValue : nil
+        ]
+        try await userDocument(uid: uid).updateData(data as [AnyHashable : Any])
+    }
+
 
 //    func createNewUser(auth: AuthDataResultModel) async throws {
 //        var userData: [String: Any] = [
