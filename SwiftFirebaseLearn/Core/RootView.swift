@@ -12,7 +12,8 @@ struct RootView: View {
     var body: some View {
         NavigationStack {
             if !showSignInView {
-                ProfileView(showSignInView: $showSignInView)
+//                ProfileView(showSignInView: $showSignInView)
+                ProductsView()
             }
         }
         .onAppear {
