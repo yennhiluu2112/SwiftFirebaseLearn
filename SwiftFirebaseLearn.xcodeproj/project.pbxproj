@@ -12,6 +12,7 @@
 		FC05B2852D1ABC77001961D7 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05B2842D1ABC77001961D7 /* ProfileViewModel.swift */; };
 		FC05B2872D1ABC90001961D7 /* ProductsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05B2862D1ABC90001961D7 /* ProductsManager.swift */; };
 		FC05B28A2D1B1ACE001961D7 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05B2892D1B1ACE001961D7 /* ProductCellView.swift */; };
+		FC05B28C2D205C9E001961D7 /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC05B28B2D205C9E001961D7 /* ProductsViewModel.swift */; };
 		FCC823552D186DE400FDCE82 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC823542D186DE400FDCE82 /* SettingsViewModel.swift */; };
 		FCC823582D186E1E00FDCE82 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC823572D186E1E00FDCE82 /* AuthenticationViewModel.swift */; };
 		FCC8235B2D186E6F00FDCE82 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8235A2D186E6F00FDCE82 /* SignInEmailViewModel.swift */; };
@@ -43,6 +44,7 @@
 		FC05B2842D1ABC77001961D7 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		FC05B2862D1ABC90001961D7 /* ProductsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsManager.swift; sourceTree = "<group>"; };
 		FC05B2892D1B1ACE001961D7 /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
+		FC05B28B2D205C9E001961D7 /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		FCC823542D186DE400FDCE82 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		FCC823572D186E1E00FDCE82 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		FCC8235A2D186E6F00FDCE82 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				FC05B2822D1AB72A001961D7 /* ProductsView.swift */,
+				FC05B28B2D205C9E001961D7 /* ProductsViewModel.swift */,
 				FC05B2882D1B1ABD001961D7 /* Subviews */,
 			);
 			path = Product;
@@ -315,6 +318,7 @@
 				FCF8DCE32D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift in Sources */,
 				FCF8DD022D0611E300AD3C35 /* RootView.swift in Sources */,
 				FCC8235B2D186E6F00FDCE82 /* SignInEmailViewModel.swift in Sources */,
+				FC05B28C2D205C9E001961D7 /* ProductsViewModel.swift in Sources */,
 				FCF8DD112D132F4200AD3C35 /* SignInGoogleHelper.swift in Sources */,
 				FCF8DCFA2D0605A900AD3C35 /* AuthenticationView.swift in Sources */,
 				FCF8DD002D060BDA00AD3C35 /* AuthenticationManager.swift in Sources */,

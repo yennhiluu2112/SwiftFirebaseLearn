@@ -41,7 +41,6 @@ struct Product: Identifiable, Codable, Equatable {
     static func ==(lhs: Product, rhs: Product) -> Bool {
         return lhs.id == rhs.id
     }
-    
 }
 
 //    func downloadProductsAndUploadToFirebase() {
