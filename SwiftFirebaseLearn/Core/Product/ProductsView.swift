@@ -14,6 +14,13 @@ struct ProductsView: View {
         List {
             ForEach(viewModel.products) { product in
                ProductCellView(product: product)
+                    .contextMenu(ContextMenu(menuItems: {
+                        Button(action: {
+                            viewModel.addUserFavoriteProduct(productId: product.id)
+                        }, label: {
+                            Text("Add to favorites")
+                        })
+                    }))
                 
                 if product == viewModel.products.last && viewModel.products.count < viewModel.allProductsCount {
                     ProgressView()
