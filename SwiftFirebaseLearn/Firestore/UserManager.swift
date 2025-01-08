@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import Combine
 
 struct UserFavoriteProduct: Codable {
     let id: String
@@ -151,6 +152,8 @@ final class UserManager {
         return decoder
     }()
     
+    private var userFavoriteProductsListener: ListenerRegistration? = nil
+    
     func createNewUser(user: DBUser) throws {
         try userDocument(uid: user.uid).setData(from: user, merge: false)
     }
@@ -218,36 +221,16 @@ final class UserManager {
     func getUserFavoriteProducts(uid: String) async throws -> [UserFavoriteProduct] {
         try await userFavoriteProductsCollection(uid: uid).getAllDocuments(as: UserFavoriteProduct.self)
     }
-
-
-//    func createNewUser(auth: AuthDataResultModel) async throws {
-//        var userData: [String: Any] = [
-//            "user_id": auth.uid,
-//            "is_anonymous": auth.isAnonymous,
-//            "date_created": Timestamp()
-//        ]
-//        
-//        if let email = auth.email {
-//            userData["email"] = email
-//        }
-//        
-//        if let photoURL = auth.photoURL{
-//            userData["photo_url"] = photoURL
-//        }
-//        try await userDocument(uid: auth.uid).setData(userData, merge: false)
-//    }
     
-//    func getUser(uid: String) async throws -> DBUser {
-//        let snapshot = try await userDocument(uid: uid).getDocument()
-//        guard let data = snapshot.data(), let uid = data["user_id"] as? String else {
-//            throw URLError(.badServerResponse)
-//        }
-//        
-//        let isAnonymous = data["is_anonymous"] as? Bool
-//        let email = data["email"] as? String
-//        let photoUrl = data["photo_url"] as? String
-//        let dateCreated = data["date_created"] as? Date
-//
-//        return DBUser(uid: uid, isAnonymous: isAnonymous, email: email, photoUrl: photoUrl, dateCreated: dateCreated)
-//    }
+    func removeListenerForAllUserFavoriteProducts(){
+        self.userFavoriteProductsListener?.remove()
+    }
+    
+    func addListenerForAllUserFavoriteProducts(uid: String) -> AnyPublisher<[UserFavoriteProduct], Error> {
+        let (publisher, listener) = userFavoriteProductsCollection(uid: uid)
+            .addSnapshotListener(as: UserFavoriteProduct.self)
+        
+        self.userFavoriteProductsListener = listener
+        return publisher
+    }
 }

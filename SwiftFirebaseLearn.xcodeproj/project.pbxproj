@@ -21,6 +21,9 @@
 		FCC8235B2D186E6F00FDCE82 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8235A2D186E6F00FDCE82 /* SignInEmailViewModel.swift */; };
 		FCC8235E2D186E9700FDCE82 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC8235D2D186E9700FDCE82 /* ProfileView.swift */; };
 		FCC823612D18746200FDCE82 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC823602D18746200FDCE82 /* UserManager.swift */; };
+		FCDDA5872D2E8270008343D9 /* Query+EXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDA5862D2E8270008343D9 /* Query+EXT.swift */; };
+		FCDDA58B2D2E82A3008343D9 /* OnFirstAppearViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDA58A2D2E82A3008343D9 /* OnFirstAppearViewModifier.swift */; };
+		FCDDA58D2D2E82D4008343D9 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDA58C2D2E82D4008343D9 /* FavoritesViewModel.swift */; };
 		FCF8DCE32D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8DCE22D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift */; };
 		FCF8DCE52D05B09D00AD3C35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8DCE42D05B09D00AD3C35 /* ContentView.swift */; };
 		FCF8DCE72D05B09F00AD3C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCF8DCE62D05B09F00AD3C35 /* Assets.xcassets */; };
@@ -56,6 +59,9 @@
 		FCC8235A2D186E6F00FDCE82 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
 		FCC8235D2D186E9700FDCE82 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		FCC823602D18746200FDCE82 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		FCDDA5862D2E8270008343D9 /* Query+EXT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Query+EXT.swift"; sourceTree = "<group>"; };
+		FCDDA58A2D2E82A3008343D9 /* OnFirstAppearViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnFirstAppearViewModifier.swift; sourceTree = "<group>"; };
+		FCDDA58C2D2E82D4008343D9 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		FCF8DCDF2D05B09D00AD3C35 /* SwiftFirebaseLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFirebaseLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF8DCE22D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFirebaseLearnApp.swift; sourceTree = "<group>"; };
 		FCF8DCE42D05B09D00AD3C35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				FC05B2942D21418D001961D7 /* FavoritesView.swift */,
+				FCDDA58C2D2E82D4008343D9 /* FavoritesViewModel.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -170,6 +177,30 @@
 			path = Firestore;
 			sourceTree = "<group>";
 		};
+		FCDDA5852D2E8261008343D9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCDDA5862D2E8270008343D9 /* Query+EXT.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCDDA5882D2E8289008343D9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FCDDA5892D2E828F008343D9 /* ViewModifiers */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		FCDDA5892D2E828F008343D9 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				FCDDA58A2D2E82A3008343D9 /* OnFirstAppearViewModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		FCF8DCD62D05B09D00AD3C35 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +221,8 @@
 		FCF8DCE12D05B09D00AD3C35 /* SwiftFirebaseLearn */ = {
 			isa = PBXGroup;
 			children = (
+				FCDDA5882D2E8289008343D9 /* Components */,
+				FCDDA5852D2E8261008343D9 /* Extensions */,
 				FCF8DCE22D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift */,
 				FCF8DCE42D05B09D00AD3C35 /* ContentView.swift */,
 				FCF8DD162D186D0D00AD3C35 /* Core */,
@@ -342,6 +375,7 @@
 				FCC823612D18746200FDCE82 /* UserManager.swift in Sources */,
 				FCF8DCE32D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift in Sources */,
 				FCF8DD022D0611E300AD3C35 /* RootView.swift in Sources */,
+				FCDDA58B2D2E82A3008343D9 /* OnFirstAppearViewModifier.swift in Sources */,
 				FCC8235B2D186E6F00FDCE82 /* SignInEmailViewModel.swift in Sources */,
 				FC05B28C2D205C9E001961D7 /* ProductsViewModel.swift in Sources */,
 				FCF8DD112D132F4200AD3C35 /* SignInGoogleHelper.swift in Sources */,
@@ -354,6 +388,8 @@
 				FC05B2922D213F25001961D7 /* TabbarView.swift in Sources */,
 				FC05B2972D215625001961D7 /* ProductCellViewBuilder.swift in Sources */,
 				FC05B2832D1AB72A001961D7 /* ProductsView.swift in Sources */,
+				FCDDA58D2D2E82D4008343D9 /* FavoritesViewModel.swift in Sources */,
+				FCDDA5872D2E8270008343D9 /* Query+EXT.swift in Sources */,
 				FCC823552D186DE400FDCE82 /* SettingsViewModel.swift in Sources */,
 				FCF8DD132D15209200AD3C35 /* SignInAppleHelper.swift in Sources */,
 				FCC8235E2D186E9700FDCE82 /* ProfileView.swift in Sources */,
