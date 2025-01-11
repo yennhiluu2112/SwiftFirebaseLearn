@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import PhotosUI
+import UIKit
 
 struct ProfileView: View {
     
     @StateObject private var viewModel = ProfileViewModel()
     @Binding var showSignInView: Bool
-    
+    @State private var selectedPhoto: PhotosPickerItem? = nil
+
     let preferenceOptions: [String] = ["Sports", "Movies", "Books"]
     
     private func isPreferenceSelected(text: String) -> Bool {
@@ -63,6 +66,33 @@ struct ProfileView: View {
                 }, label: {
                     Text("Favorite Movie: \(user.favoriteMovie?.title ?? "")")
                 })
+                
+                PhotosPicker("Photo", 
+                             selection: $selectedPhoto,
+                             matching: .images,
+                             photoLibrary: .shared())
+                
+                if let urlString = viewModel.user?.photoUrl,
+                    let url = URL(string: urlString) {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 150, height: 150)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 150, height: 150)
+                    }
+                }
+                
+                if viewModel.user?.profileImagePath != nil {
+                    Button(action: {
+                        viewModel.deleteImage()
+                    }, label: {
+                        Text("Delete image")
+                    })
+                }
             }
         }
         .task {
@@ -77,6 +107,11 @@ struct ProfileView: View {
                     Image(systemName: "gear")
                         .font(.headline)
                 }
+            }
+        }
+        .onChange(of: selectedPhoto) { oldValue, newValue in
+            if let newValue {
+                viewModel.saveImage(item: newValue)
             }
         }
     }

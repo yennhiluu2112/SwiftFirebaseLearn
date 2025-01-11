@@ -68,6 +68,7 @@ final class ProductsManager {
     func getAllProductsCount() async throws -> Int {
         try await productCollection.aggregateCount()
     }
+}
     
 //
 //    func getProductsByRating(count: Int, lastRating: Double?) async throws -> [Product] {
@@ -92,5 +93,5 @@ final class ProductsManager {
 //                .getDocumentsWithSnapshot(as: Product.self)
 //        }
 //    }
-}
+
 

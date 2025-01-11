@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import PhotosUI
+import SwiftUI
 
 @MainActor
 final class ProfileViewModel: ObservableObject {
@@ -59,6 +61,24 @@ final class ProfileViewModel: ObservableObject {
         Task {
             try await UserManager.shared.removeFavoriteMovie(uid: user.uid)
             self.user = try await UserManager.shared.getUser(uid: user.uid)
+        }
+    }
+    
+    func saveImage(item: PhotosPickerItem)  {
+        guard let user else { return }
+        Task {
+            guard let data = try await item.loadTransferable(type: Data.self) else { return }
+            let (path, name) = try await StorageManager.shared.saveImage(data: data, uid: user.uid)
+            let url = try await StorageManager.shared.getUrlForImage(path: path)
+            try await UserManager.shared.updateUserProfileImage(uid: user.uid, path: path, url: url.absoluteString)
+        }
+    }
+    
+    func deleteImage()  {
+        guard let user, let path = user.profileImagePath else { return }
+        Task {
+            try await StorageManager.shared.deleteImage(path: path)
+            try await UserManager.shared.updateUserProfileImage(uid: user.uid)
         }
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseFirestore
 
 extension Query {
 //    func getAllDocuments<T>(as type: T.Type) async throws -> [T] where T: Decodable {
