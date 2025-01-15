@@ -19,7 +19,8 @@ struct SwiftFirebaseLearnApp: App {
     var body: some Scene {
         WindowGroup {
 //            RootView()
-            PerformanceView()
+//            PerformanceView()
+            AnalyticsView()
         }
     }
 }

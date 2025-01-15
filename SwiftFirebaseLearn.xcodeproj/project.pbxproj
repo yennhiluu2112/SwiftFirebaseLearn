@@ -30,6 +30,8 @@
 		FCDDA5982D33A47C008343D9 /* CrashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDA5972D33A47C008343D9 /* CrashView.swift */; };
 		FCDDA59A2D33B769008343D9 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = FCDDA5992D33B769008343D9 /* FirebasePerformance */; };
 		FCDDA59D2D33B7B6008343D9 /* PerformanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDA59C2D33B7B6008343D9 /* PerformanceView.swift */; };
+		FCDDA59F2D33C085008343D9 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDDA59E2D33C085008343D9 /* AdSupport.framework */; };
+		FCDDA5A22D33C09C008343D9 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDDA5A12D33C09C008343D9 /* AnalyticsView.swift */; };
 		FCF8DCE32D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8DCE22D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift */; };
 		FCF8DCE52D05B09D00AD3C35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF8DCE42D05B09D00AD3C35 /* ContentView.swift */; };
 		FCF8DCE72D05B09F00AD3C35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCF8DCE62D05B09F00AD3C35 /* Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		FCDDA5912D3117F1008343D9 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		FCDDA5972D33A47C008343D9 /* CrashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashView.swift; sourceTree = "<group>"; };
 		FCDDA59C2D33B7B6008343D9 /* PerformanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceView.swift; sourceTree = "<group>"; };
+		FCDDA59E2D33C085008343D9 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		FCDDA5A12D33C09C008343D9 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		FCF8DCDF2D05B09D00AD3C35 /* SwiftFirebaseLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFirebaseLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF8DCE22D05B09D00AD3C35 /* SwiftFirebaseLearnApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftFirebaseLearnApp.swift; sourceTree = "<group>"; };
 		FCF8DCE42D05B09D00AD3C35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			files = (
 				FCF8DCF42D05C0FA00AD3C35 /* FirebaseAnalytics in Frameworks */,
 				FCF8DCF72D0603EC00AD3C35 /* FirebaseAuth in Frameworks */,
+				FCDDA59F2D33C085008343D9 /* AdSupport.framework in Frameworks */,
 				FCF8DD072D131A0000AD3C35 /* GoogleSignIn in Frameworks */,
 				FCDDA5942D33A1CF008343D9 /* FirebaseCrashlytics in Frameworks */,
 				FCF8DD152D186BC300AD3C35 /* FirebaseFirestore in Frameworks */,
@@ -237,6 +242,14 @@
 			path = Performance;
 			sourceTree = "<group>";
 		};
+		FCDDA5A02D33C08D008343D9 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				FCDDA5A12D33C09C008343D9 /* AnalyticsView.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		FCF8DCD62D05B09D00AD3C35 = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +281,7 @@
 				FCDDA5902D3117E5008343D9 /* Storage */,
 				FCDDA5962D33A467008343D9 /* Crashlytics */,
 				FCDDA59B2D33B7A1008343D9 /* Performance */,
+				FCDDA5A02D33C08D008343D9 /* Analytics */,
 				FCF8DD0A2D131A2500AD3C35 /* GoogleService-Info.plist */,
 				FCF8DD0C2D131A4700AD3C35 /* Info.plist */,
 				FCF8DCE62D05B09F00AD3C35 /* Assets.xcassets */,
@@ -287,6 +301,7 @@
 		FCF8DCF52D0603EC00AD3C35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FCDDA59E2D33C085008343D9 /* AdSupport.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -436,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDDA5A22D33C09C008343D9 /* AnalyticsView.swift in Sources */,
 				FC05B2872D1ABC90001961D7 /* ProductsManager.swift in Sources */,
 				FCC823582D186E1E00FDCE82 /* AuthenticationViewModel.swift in Sources */,
 				FCF8DD042D06132D00AD3C35 /* SettingsView.swift in Sources */,
